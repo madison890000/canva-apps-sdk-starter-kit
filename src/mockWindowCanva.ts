@@ -3,17 +3,15 @@ const generateEmptyFunction = () => function () {
 const generateEmptyAsyncFunction = () => async function () {
 }
 window.canva = {
-    CanvaError: class {
-    },
+    CanvaError: class {},
     authentication: {},
     content: {},
     dataConsumer: {},
     designInteraction: {
         addNativeElement: generateEmptyAsyncFunction(),
-        addPage: generateEmptyFunction(),
+        addPage: generateEmptyAsyncFunction(),
         getCurrentPageContext: generateEmptyFunction(),
-        getDefaultPageDimensions: async () => {
-        },
+        getDefaultPageDimensions: generateEmptyAsyncFunction(),
         addAudioTrack: generateEmptyFunction(),
         initAppElement: generateEmptyFunction(),
         hd: [],
