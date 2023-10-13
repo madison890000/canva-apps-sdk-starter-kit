@@ -1,6 +1,8 @@
-const generateEmptyFunction = () => function () {
+const generateEmptyFunction = (name: string) => function (...props) {
+  console.log(`Canva function ${name} is called with params: `, props)
 }
-const generateEmptyAsyncFunction = () => async function () {
+const generateEmptyAsyncFunction = (name?: string) => async function (...props) {
+  console.log(`Canva async function ${name} is called with params: `, props)
 }
 window.canva = {
   CanvaError: class {
@@ -9,48 +11,48 @@ window.canva = {
   content: {},
   dataConsumer: {},
   designInteraction: {
-    addNativeElement: generateEmptyAsyncFunction(),
-    addPage: generateEmptyAsyncFunction(),
-    getCurrentPageContext: generateEmptyFunction(),
-    getDefaultPageDimensions: generateEmptyAsyncFunction(),
-    addAudioTrack: generateEmptyFunction(),
-    initAppElement: generateEmptyFunction(),
+    addNativeElement: generateEmptyAsyncFunction('addNativeElement'),
+    addPage: generateEmptyAsyncFunction('addPage'),
+    getCurrentPageContext: generateEmptyFunction('getCurrentPageContext'),
+    getDefaultPageDimensions: generateEmptyAsyncFunction('getDefaultPageDimensions'),
+    addAudioTrack: generateEmptyFunction('addAudioTrack'),
+    initAppElement: generateEmptyFunction('initAppElement'),
     hd: [],
-    onAppElementChange: generateEmptyFunction(),
-    onAppElementDrop: generateEmptyFunction(),
-    registerRenderAppElement: generateEmptyFunction(),
+    onAppElementChange: generateEmptyFunction('onAppElementChange'),
+    onAppElementDrop: generateEmptyFunction('onAppElementDrop'),
+    registerRenderAppElement: generateEmptyFunction('registerRenderAppElement'),
     selection: {
-      registerOnChange: generateEmptyFunction(),
-      setContent: generateEmptyFunction(),
-      updateAllContent: generateEmptyFunction(),
+      registerOnChange: generateEmptyFunction('registerOnChange'),
+      setContent: generateEmptyFunction('setContent'),
+      updateAllContent: generateEmptyFunction('updateAllContent'),
     },
     selection2: {
-      registerOnChange: generateEmptyFunction(),
+      registerOnChange: generateEmptyFunction('registerOnChange'),
     },
-    setCurrentPageBackground: generateEmptyFunction(),
+    setCurrentPageBackground: generateEmptyFunction('setCurrentPageBackground'),
   },
   dragAndDrop: {
-    makeDraggable: generateEmptyFunction(),
-    startDrag: generateEmptyFunction(),
+    makeDraggable: generateEmptyFunction('makeDraggable'),
+    startDrag: generateEmptyFunction('startDrag'),
   },
   export: {
-    requestExport: generateEmptyFunction(),
+    requestExport: generateEmptyFunction('requestExport'),
   },
   fetch: {
-    post: generateEmptyFunction(),
-    get: generateEmptyFunction(),
+    post: generateEmptyFunction('post'),
+    get: generateEmptyFunction('get'),
   },
   generation: {
-    requestReportContent: generateEmptyFunction(),
-    requestUpgrade: generateEmptyFunction(),
-    generateImages: generateEmptyFunction(),
-    getQuota: generateEmptyFunction(),
+    requestReportContent: generateEmptyFunction('requestReportContent'),
+    requestUpgrade: generateEmptyFunction('requestUpgrade'),
+    generateImages: generateEmptyFunction('generateImages'),
+    getQuota: generateEmptyFunction('getQuota'),
   },
   interactiveElement: {
-    onAppElementChange: generateEmptyFunction(),
+    onAppElementChange: generateEmptyFunction('onAppElementChange'),
   },
   platform: {
-    requestOpenExternalUrl: generateEmptyFunction(),
+    requestOpenExternalUrl: generateEmptyFunction('requestOpenExternalUrl'),
   },
   skeleton: {},
 }
@@ -64,6 +66,6 @@ window.__canva__ = {
         theme: "dark"
       })
     },
-    onUiContextChange: generateEmptyAsyncFunction(),
+    onUiContextChange: generateEmptyAsyncFunction('onUiContextChange'),
   }
 }
