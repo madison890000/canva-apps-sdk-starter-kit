@@ -183,10 +183,10 @@ function buildConfig({
         BACKEND_HOST: JSON.stringify(backendHost),
         MOCK_WINDOW_CANVA:process.env.MOCK_WINDOW_CANVA?.toLowerCase().trim() === "true"
       }),
-        hasIndexHTML ? new HtmlWebpackPlugin({
-          template: 'src/index.html',
-          inject: 'body',
-        }) : null,
+      hasIndexHTML ? new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        inject: 'body',
+      }) : null,
     ]?.filter(e=>!!e),
     ...buildDevConfig(devConfig),
   };
