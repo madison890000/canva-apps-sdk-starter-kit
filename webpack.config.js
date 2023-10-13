@@ -22,6 +22,7 @@ const chalk = require("chalk");
 function buildConfig({
   devConfig,
   appEntry = path.join(__dirname, "src", "index.tsx"),
+  mockCanvaEntry = path.join(__dirname, "src", "mockWindowCanva.ts"),
   backendHost = process.env.CANVA_BACKEND_HOST,
   hasIndexHTML = false,
 } = {}) {
@@ -41,11 +42,13 @@ function buildConfig({
       `Refer to "Customizing the backend host" in the README.md for more information.`
     );
   }
-
   return {
     mode,
     context: path.resolve(__dirname, "./"),
-    entry: {
+    entry: hasIndexHTML ? {
+      app: appEntry,
+      mockCanva:mockCanvaEntry,
+    }:{
       app: appEntry,
     },
     target: "web",
@@ -176,8 +179,12 @@ function buildConfig({
     plugins: [
       new DefinePlugin({
         BACKEND_HOST: JSON.stringify(backendHost),
+        MOCK_WINDOW_CANVA:process.env.MOCK_WINDOW_CANVA?.toLowerCase().trim() === "true"
       }),
-        hasIndexHTML ? new HtmlWebpackPlugin() : null,
+        hasIndexHTML ? new HtmlWebpackPlugin({
+          template: 'src/index.html',
+          inject: 'body',
+        }) : null,
     ],
     ...buildDevConfig(devConfig),
   };

@@ -27,3 +27,17 @@ declare module "*.svg" {
 }
 
 declare const BACKEND_HOST: string;
+declare const MOCK_WINDOW_CANVA: boolean;
+
+interface Window {
+  canva: {
+    export: any;
+    designInteraction: {
+        addNativeElement:any;
+        addAudioTrack:any;
+        getCurrentPageContext:any;
+        initAppElement:any;
+    };
+    dragAndDrop:any;
+  };
+}

@@ -90,6 +90,7 @@ async function start() {
   const table = new Table();
 
   const frontendEntry = path.join(ENTRY_DIR, "index.tsx");
+  const mockCanvaEntry = path.join(ENTRY_DIR, "mockWindowCanva.ts");
 
   if (!fs.existsSync(frontendEntry)) {
     throw new Error(
@@ -111,6 +112,7 @@ async function start() {
 
   const runtimeWebpackConfig = buildConfig({
     appEntry: frontendEntry,
+    mockCanvaEntry:mockCanvaEntry,
     backendHost,
     devConfig: {
       port: CANVA_FRONTEND_PORT,
