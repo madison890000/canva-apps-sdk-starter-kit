@@ -59,7 +59,10 @@ window.canva = {
 window.__canva__ = {
   uiKit: {
     getUiContext: async function () {
-      return Promise.resolve({})
+      return Promise.resolve({
+        direction: "ltr",
+        theme: "dark"
+      })
     },
     onUiContextChange: generateEmptyAsyncFunction(),
   }
