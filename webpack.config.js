@@ -9,8 +9,10 @@ const chalk = require("chalk");
  *
  * @param {Object} [options]
  * @param {string} [options.appEntry=./src/index.tsx]
+ * @param {string} [options.mockCanvaEntry=./src/mockWindowCanva.ts]
  * @param {string} [options.backendHost]
  * @param {Object} [options.devConfig]
+ * @param {boolean} [options.hasIndexHTML]
  * @param {string} options.devConfig.port
  * @param {boolean} [options.devConfig.enableHmr]
  * @param {boolean} [options.devConfig.enableHttps]
@@ -185,7 +187,7 @@ function buildConfig({
           template: 'src/index.html',
           inject: 'body',
         }) : null,
-    ],
+    ]?.filter(e=>!!e),
     ...buildDevConfig(devConfig),
   };
 }
